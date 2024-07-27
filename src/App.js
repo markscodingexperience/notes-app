@@ -1,5 +1,7 @@
 import './App.css';
-import './components/Header';
+import Header from './components/Header';
+import Card from './components/Card';
+import Category from './components/Category';
 
 function App() {
   const name = "Mark"
@@ -8,9 +10,11 @@ function App() {
   
   return (
     <div className="App">
-      <header className="App-header">
         <Header />
-      </header>
+        <div className="category">
+          <Category />
+        </div>
+        <Card />
     </div>
   );
 }

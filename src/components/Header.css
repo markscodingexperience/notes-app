@@ -1,0 +1,37 @@
+@media screen and (min-width: 390px) {
+    .header-grid { 
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        justify-content: center;
+        width:max-content;
+    }
+
+    .header-title {
+        font-size: 35px;
+        margin: 10px 0 10px 10px;
+        padding: 10px;
+    }
+
+    .header-add {
+        max-width: 100px;
+        justify-self: center;
+        padding: 11px 15px;
+        border-radius: 10px;
+        border: solid 1px black;
+    } 
+
+    .header-add:hover {
+        background: rgb(231, 229, 229);
+    }
+
+    .header-select {
+        text-decoration: none;
+        border: none;
+        background: rgb(212, 212, 209);
+        margin: 10px;
+        padding: 5px 0;
+        border-radius: 5px;
+    }
+}
+

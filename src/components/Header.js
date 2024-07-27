@@ -1,12 +1,21 @@
+import './Header.css';
+
 const Header = () => {
     return (
         <>
-            <h2>Your Notes</h2>
-            <button> + </button>
-            <select name="" id="">Personal</select>
-            <button type="button">#all</button>
+            <div className="header-grid">
+                <h1 className="header-title">Your Notes</h1>
+                <button className="header-add"> + </button>
+                <select name="" id="" className="header-select">
+                    <option value="#all">#all</option>
+                    <option value="#personal">#personal</option>
+                    <option value="#work">#groceries</option>
+                    <option value="#school">#work</option>
+                </select>
+                
+            </div>
         </>
-       
+        
       );
 }
  

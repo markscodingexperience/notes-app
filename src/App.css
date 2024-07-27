@@ -1,8 +1,19 @@
 /* Mobile styles */
+@media screen and (min-width: 390px) {
+    .App {
+        align-items: center;
+        justify-content: center;
+        display: grid;
+    }
+
+    .category {
+        
+    }
+}
 
 /* small tablet sizes */
 @media screen and (min-width: 620px){
-  
+
 }
 
 @media screen and (min-width: 960px) {
