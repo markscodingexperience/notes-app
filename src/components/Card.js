@@ -1,4 +1,7 @@
 import "./Card.css";
+import Message from "./Message";
+import Input from "./Input";
+import { useState } from "react";
 
 function getRandomColor() {
     const letters = '0123456789ABCDEF';
@@ -14,34 +17,66 @@ function getRandomColor() {
   items.forEach(item => {
     item.style.backgroundColor = getRandomColor();
   });
+  
  
-  getRandomColor(); 
 
-const Card = () => {
+const Card = ({list, filter}) => {
+  
+  getRandomColor();
+  const [showModal, setShowModal] = useState(false);
+  // const [id, setId] = useState(0);
+
+  const [data, setData] = useState({
+    id: "",
+    title: "",
+    tag: "",
+    note: ""
+  });
+  
+  const editHandle = (data) => {
+    const { id, title, tag, note } = data;
+    setShowModal(true); // Show the modal when an item is clicked
+
+    setData(state => ({
+      ...state,
+      id:id,
+      title: title,
+      tag: tag,
+      note: note,
+    }))
+  };
+
+  const closeModal = () => setShowModal(false);
+  if(filter === "") {
+
     return (  
-        <div className="card">
-             <div className="card-single">
-                <span className="title-card">Title of Card</span>
-                <p className="date-card">Date of Card</p>
-                <p className="message-card">Lorem ipsum dolor sit amet consectetur adipisiLorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, quis ea rerum nemo provident, natus similique, perferendis sequi cum tenetur odio nobis velit pariatur corrupti? Non blanditiis quas alias suscipit.</p>
-            </div>
-            <div className="card-single">
-                <span className="title-card">Title of Card</span>
-                <p className="date-card">Date of Card</p>
-                <p className="message-card">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, quis ea rerum nemo provident, natus similique, perferendis sequi cum tenetur odio nobis velit pariatur corrupti? Non blanditiis quas alias suscipit.Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, quis ea rerum nemo provident, natus similique, perferendis sequi cum tenetur odio nobis velit pariatur corrupti? Non blanditiis quas alias suscipit.</p>
-            </div>
-            <div className="card-single">
-                <span className="title-card">Title of Card</span>
-                <p className="date-card">Date of Card</p>
-                <p className="message-card">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, quis ea rerum nemo provident, natus similique, perferendis sequi cum tenetur odio nobis velit pariatur corrupti? Non blanditiis quas alias suscipit.</p>
-            </div>
-            <div className="card-single">
-                <span className="title-card">Title of Card</span>
-                <p className="date-card">Date of Card</p>
-                <p className="message-card">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, quis ea rerum nemo provident, natus similique, perferendis sequi cum tenetur odio nobis velit pariatur corrupti? Non blanditiis quas alias suscipit.</p>
-            </div>
-        </div>
+      <div className="card">
+        {list.map(data => (
+          <div className="card-single" key={data.id} data-id={data.id} onClick={() => editHandle(data)}>
+            <span className="title-card">{data.title}</span>
+            <p className="date-card">{data.tag}</p>
+            <p className="message-card">{data.note}</p>
+          </div>
+        ))};
+        <Message showModal={showModal} closeModal={closeModal} data={data}/>
+      </div>
     );
+  }else {
+    const newList = list.filter((list) => list.tag === filter);
+    return (  
+      <div className="card">
+        {newList.map(data => (
+          <div className="card-single" key={data.id} data-id={data.id} onClick={() => editHandle(data)}>
+            <span className="title-card">{data.title}</span>
+            <p className="date-card">{data.tag}</p>
+            <p className="message-card">{data.note}</p>
+          </div>
+        ))};
+      </div>
+  );
+  }
+
+   
 }
 
 

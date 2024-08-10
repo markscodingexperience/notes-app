@@ -19,13 +19,13 @@
 
     .card-single:nth-child(2n) {
         transform: rotate(-5deg);
-        margin-top: -4px;
-        margin-left: -20px;
+        margin-top: 11px;
+        margin-left: 5px;
         z-index: 1; 
     }
 
     .card-single:nth-child(2n + 1) {
-        margin-top: -65px;
+        margin-top: -45px;
     }
 
     .title-card {

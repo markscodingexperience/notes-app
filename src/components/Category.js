@@ -1,13 +1,21 @@
 import "./Category.css";
 
-const Category = () => {
+const Category = ({list, setFilter}) => {
+
+    function handleAll(){
+        setFilter("");
+    }
+
+
+    function handleFilter(e){
+        setFilter(e);
+    }
     return ( 
         <>
-            <button type="button" className="category-button">#all</button>
-            <button type="button" className="category-button">#personal</button>
-            <button type="button" className="category-button">#groceries</button>
-            <button type="button" className="category-button">#work</button>
-            <button type="button" className="category-button">#school</button>
+            <button type="button" onClick={handleAll} className="category-button">#all</button>
+            {list.map(data => (
+                <button type="button" onClick={(e) => handleFilter(e.target.value)} key={data.id} value={data.tag} className="category-button">#{data.tag}</button>
+            ))}
         </>
     );
 }
